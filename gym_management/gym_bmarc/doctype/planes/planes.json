@@ -1,0 +1,77 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-09-16 11:33:11.001979",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "name_plan",
+  "time_month",
+  "column_break_tklq",
+  "cost",
+  "iva",
+  "total"
+ ],
+ "fields": [
+  {
+   "fieldname": "name_plan",
+   "fieldtype": "Data",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Nombre"
+  },
+  {
+   "fieldname": "time_month",
+   "fieldtype": "Data",
+   "label": "Tiempo(Meses)"
+  },
+  {
+   "fieldname": "column_break_tklq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "cost",
+   "fieldtype": "Currency",
+   "label": "Costo",
+   "precision": "2"
+  },
+  {
+   "fieldname": "iva",
+   "fieldtype": "Float",
+   "label": "Iva",
+   "precision": "2"
+  },
+  {
+   "fieldname": "total",
+   "fieldtype": "Float",
+   "label": "Total",
+   "precision": "2"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-09-16 11:39:53.421688",
+ "modified_by": "Administrator",
+ "module": "Gym BMARC",
+ "name": "Planes",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
