@@ -20,11 +20,12 @@
    "in_list_view": 1,
    "in_preview": 1,
    "in_standard_filter": 1,
-   "label": "Nombre"
+   "label": "Nombre",
+   "unique": 1
   },
   {
    "fieldname": "time_month",
-   "fieldtype": "Data",
+   "fieldtype": "Int",
    "label": "Tiempo(Meses)"
   },
   {
@@ -39,7 +40,7 @@
   },
   {
    "fieldname": "iva",
-   "fieldtype": "Float",
+   "fieldtype": "Int",
    "label": "Iva",
    "precision": "2"
   },
@@ -52,7 +53,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-09-16 11:39:53.421688",
+ "modified": "2024-09-16 11:45:02.713829",
  "modified_by": "Administrator",
  "module": "Gym BMARC",
  "name": "Planes",
