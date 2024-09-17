@@ -30,7 +30,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-09-16 13:11:30.521647",
+ "modified": "2024-09-17 09:48:30.786839",
  "modified_by": "Administrator",
  "module": "Gym BMARC",
  "name": "Company",
@@ -49,7 +49,9 @@
    "write": 1
   }
  ],
+ "show_title_field_in_link": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "title_field": "name_company"
 }

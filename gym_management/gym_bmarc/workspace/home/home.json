@@ -1,0 +1,59 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"8v9rtT4MkO\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Inicio</span>\",\"col\":12}},{\"id\":\"poAsVUuTv2\",\"type\":\"card\",\"data\":{\"card_name\":\"Clientes\",\"col\":4}}]",
+ "creation": "2024-09-16 17:21:31.503032",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "add-round",
+ "idx": 0,
+ "indicator_color": "green",
+ "is_hidden": 0,
+ "label": "Home",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Clientes",
+   "link_count": 0,
+   "link_to": "Customer",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Clientes",
+   "link_count": 1,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Clientes",
+   "link_count": 0,
+   "link_to": "Customer",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2024-09-16 17:26:58.574536",
+ "modified_by": "Administrator",
+ "module": "Gym BMARC",
+ "name": "Home",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 6.0,
+ "shortcuts": [],
+ "title": "Home"
+}

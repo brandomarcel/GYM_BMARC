@@ -14,27 +14,34 @@
   {
    "fieldname": "first_name",
    "fieldtype": "Data",
-   "label": "Nombres"
+   "in_list_view": 1,
+   "label": "Nombres",
+   "reqd": 1
   },
   {
    "fieldname": "last_name",
    "fieldtype": "Data",
-   "label": "Apellidos"
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Apellidos",
+   "reqd": 1
   },
   {
    "fieldname": "column_break_wbqy",
    "fieldtype": "Column Break"
   },
   {
+   "depends_on": "eval:frappe.session.user == 'Administrator'",
    "fieldname": "company_id",
    "fieldtype": "Link",
    "label": "Compa\u00f1ia",
    "options": "Company"
   }
  ],
+ "hide_toolbar": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-09-16 15:19:20.763141",
+ "modified": "2024-09-17 10:16:44.285129",
  "modified_by": "Administrator",
  "module": "Gym BMARC",
  "name": "Customer",
