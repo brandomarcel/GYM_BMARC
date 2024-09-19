@@ -1,0 +1,97 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-09-17 16:45:50.571694",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "name_type",
+  "time_month",
+  "company",
+  "column_break_pchj",
+  "cost",
+  "iva",
+  "total"
+ ],
+ "fields": [
+  {
+   "fieldname": "name_type",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "Nombre",
+   "reqd": 1
+  },
+  {
+   "fieldname": "cost",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "Costo",
+   "reqd": 1
+  },
+  {
+   "fieldname": "iva",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "Iva %",
+   "reqd": 1
+  },
+  {
+   "fieldname": "total",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "Total",
+   "reqd": 1
+  },
+  {
+   "fieldname": "time_month",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Meses",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_pchj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:frappe.session.user == 'Administrator'",
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Compa\u00f1ia",
+   "options": "Company"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-09-18 12:54:01.800091",
+ "modified_by": "Administrator",
+ "module": "Gym BMARC",
+ "name": "Membership_Type",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "show_title_field_in_link": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "name_type"
+}

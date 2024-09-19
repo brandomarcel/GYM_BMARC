@@ -1,24 +1,22 @@
 {
  "actions": [],
  "allow_rename": 1,
- "creation": "2024-09-16 13:07:32.883570",
+ "creation": "2024-09-18 12:03:24.448732",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "plan_id",
+  "plan",
   "date_ini",
-  "date_fin",
-  "cost"
+  "date_fin"
  ],
  "fields": [
   {
-   "fieldname": "plan_id",
+   "fieldname": "plan",
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Plan",
-   "options": "Planes",
-   "reqd": 1
+   "options": "Membership_Type"
   },
   {
    "default": "Today",
@@ -32,21 +30,15 @@
    "fieldtype": "Date",
    "in_list_view": 1,
    "label": "Fecha de Fin"
-  },
-  {
-   "fieldname": "cost",
-   "fieldtype": "Currency",
-   "in_list_view": 1,
-   "label": "Valor"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-09-17 20:38:40.929698",
+ "modified": "2024-09-18 22:53:22.202613",
  "modified_by": "Administrator",
  "module": "Gym BMARC",
- "name": "Planes Contratados",
+ "name": "memberships_acquired",
  "owner": "Administrator",
  "permissions": [],
  "sort_field": "modified",

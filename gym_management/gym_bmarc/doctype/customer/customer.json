@@ -6,9 +6,16 @@
  "engine": "InnoDB",
  "field_order": [
   "first_name",
-  "last_name",
+  "email",
+  "gender",
+  "username",
   "column_break_wbqy",
-  "company_id"
+  "last_name",
+  "phone",
+  "fecha_de_nacimiento",
+  "company_id",
+  "section_break_jifb",
+  "memberhips_acquire_id"
  ],
  "fields": [
   {
@@ -36,12 +43,51 @@
    "fieldtype": "Link",
    "label": "Compa\u00f1ia",
    "options": "Company"
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Correo"
+  },
+  {
+   "fieldname": "username",
+   "fieldtype": "Data",
+   "label": "Usuario",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "phone",
+   "fieldtype": "Data",
+   "label": "Tel\u00e9fono",
+   "length": 10
+  },
+  {
+   "fieldname": "gender",
+   "fieldtype": "Select",
+   "label": "Genero",
+   "options": "MASCULINO\nFEMENINO"
+  },
+  {
+   "fieldname": "fecha_de_nacimiento",
+   "fieldtype": "Date",
+   "label": "Fecha de Nacimiento"
+  },
+  {
+   "fieldname": "section_break_jifb",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "memberhips_acquire_id",
+   "fieldtype": "Table",
+   "label": "Membres\u00edas Adquiridas",
+   "options": "memberships_acquired"
   }
  ],
  "hide_toolbar": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-09-17 10:16:44.285129",
+ "modified": "2024-09-18 12:43:44.196902",
  "modified_by": "Administrator",
  "module": "Gym BMARC",
  "name": "Customer",
