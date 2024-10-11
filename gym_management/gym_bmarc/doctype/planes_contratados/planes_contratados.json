@@ -9,7 +9,8 @@
   "plan_id",
   "date_ini",
   "date_fin",
-  "cost"
+  "cost",
+  "status"
  ],
  "fields": [
   {
@@ -38,12 +39,19 @@
    "fieldtype": "Currency",
    "in_list_view": 1,
    "label": "Valor"
+  },
+  {
+   "default": "Activo",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Estado",
+   "options": "Activo\nInactivo"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-09-17 20:38:40.929698",
+ "modified": "2024-10-10 11:32:03.194353",
  "modified_by": "Administrator",
  "module": "Gym BMARC",
  "name": "Planes Contratados",

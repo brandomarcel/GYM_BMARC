@@ -5,5 +5,5 @@
 from frappe.model.document import Document
 
 
-class memberships_acquired(Document):
+class memberships_register(Document):
 	pass

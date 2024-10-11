@@ -1,0 +1,164 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"ZrIa_h8tw3\",\"type\":\"custom_block\",\"data\":{\"custom_block_name\":\"Cabecera GYM\",\"col\":12}},{\"id\":\"tRvIKp54MA\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Acceso Rapido</b></span>\",\"col\":12}},{\"id\":\"1CkS2CC4sd\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"NUEVA MEMBRES\u00cdA\",\"col\":3}},{\"id\":\"6x_kahP_Se\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"REGISTRAR VENTA\",\"col\":3}},{\"id\":\"s-AmCmPxAZ\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"P7XdMh4Hhz\",\"type\":\"card\",\"data\":{\"card_name\":\"Mi GIMNASIO\",\"col\":3}},{\"id\":\"poAsVUuTv2\",\"type\":\"card\",\"data\":{\"card_name\":\"Clientes\",\"col\":3}},{\"id\":\"AJGdm3kxav\",\"type\":\"card\",\"data\":{\"card_name\":\"Tipo de Membres\u00edas\",\"col\":3}},{\"id\":\"CT6Ud4sLo6\",\"type\":\"card\",\"data\":{\"card_name\":\"Productos\",\"col\":3}}]",
+ "creation": "2024-09-16 17:21:31.503032",
+ "custom_blocks": [
+  {
+   "custom_block_name": "Cabecera GYM",
+   "label": "Cabecera GYM"
+  }
+ ],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "organization",
+ "idx": 1,
+ "indicator_color": "",
+ "is_hidden": 0,
+ "label": "Principal",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Clientes",
+   "link_count": 0,
+   "link_to": "Customer",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Clientes",
+   "link_count": 1,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Clientes",
+   "link_count": 0,
+   "link_to": "Customer",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Mi GIMNASIO",
+   "link_count": 1,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Empresa",
+   "link_count": 0,
+   "link_to": "Company",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Tipo de Membres\u00edas",
+   "link_count": 2,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Lista de Membres\u00edas",
+   "link_count": 0,
+   "link_to": "memberships_register",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Tipo Membres\u00edas",
+   "link_count": 0,
+   "link_to": "Membership_Type",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Productos",
+   "link_count": 2,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Lista de Productos",
+   "link_count": 0,
+   "link_to": "products",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Lista de Productos Vendidos",
+   "link_count": 0,
+   "link_to": "sales_products",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2024-10-10 15:56:00.748083",
+ "modified_by": "Administrator",
+ "module": "Gym BMARC",
+ "name": "Principal",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [
+  {
+   "role": "Admin_Gym"
+  }
+ ],
+ "sequence_id": 1.0,
+ "shortcuts": [
+  {
+   "color": "Pink",
+   "doc_view": "New",
+   "format": "{} Abrir",
+   "label": "NUEVA MEMBRES\u00cdA",
+   "link_to": "memberships_register",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "New",
+   "format": "{}Abrir",
+   "label": "REGISTRAR VENTA",
+   "link_to": "sales_products",
+   "stats_filter": "[]",
+   "type": "DocType"
+  }
+ ],
+ "title": "Principal"
+}

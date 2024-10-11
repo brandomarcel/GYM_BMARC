@@ -1,0 +1,81 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-10-09 17:07:56.524230",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "cliente_section",
+  "product_id",
+  "description",
+  "column_break_xsge",
+  "cost",
+  "company_id"
+ ],
+ "fields": [
+  {
+   "fieldname": "cliente_section",
+   "fieldtype": "Section Break",
+   "label": "Informaci\u00f3n de Cliente"
+  },
+  {
+   "depends_on": "eval:frappe.session.user == 'Administrator'",
+   "fieldname": "company_id",
+   "fieldtype": "Link",
+   "label": "Compa\u00f1ia",
+   "options": "Company"
+  },
+  {
+   "fieldname": "column_break_xsge",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "product_id",
+   "fieldtype": "Link",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Producto",
+   "options": "products",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "product_id.last_name",
+   "fieldname": "description",
+   "fieldtype": "Read Only",
+   "label": "Descripci\u00f3n"
+  },
+  {
+   "fetch_from": "product_id.cost",
+   "fieldname": "cost",
+   "fieldtype": "Currency",
+   "label": "Precio",
+   "precision": "2"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-10-09 17:13:33.387388",
+ "modified_by": "Administrator",
+ "module": "Gym BMARC",
+ "name": "sales_products",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

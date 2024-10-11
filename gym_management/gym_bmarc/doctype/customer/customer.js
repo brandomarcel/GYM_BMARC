@@ -28,7 +28,14 @@ frappe.ui.form.on('Customer', {
             frappe.msgprint(__('El número de teléfono debe tener exactamente 10 dígitos.'));
             frappe.validated = false;
         }
-    }
+    },
+    first_name: function(frm) {
+        frm.set_value('full_name', frm.doc.first_name + ' ' + frm.doc.last_name);
+    },
+    last_name: function(frm) {
+        frm.set_value('full_name', frm.doc.first_name + ' ' + frm.doc.last_name);
+    },
+
 });
 
 

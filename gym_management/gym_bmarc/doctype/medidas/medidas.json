@@ -1,0 +1,98 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-09-29 21:35:55.423039",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "peso",
+  "tricep",
+  "pecho",
+  "cintura",
+  "pierna",
+  "column_break_pjzd",
+  "fecha_de_registro",
+  "bicep",
+  "espada",
+  "gluteos",
+  "pantorrilla"
+ ],
+ "fields": [
+  {
+   "fieldname": "peso",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Peso"
+  },
+  {
+   "fieldname": "bicep",
+   "fieldtype": "Data",
+   "label": "Bicep"
+  },
+  {
+   "fieldname": "tricep",
+   "fieldtype": "Data",
+   "label": "Tricep"
+  },
+  {
+   "fieldname": "pecho",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Pecho"
+  },
+  {
+   "fieldname": "espada",
+   "fieldtype": "Data",
+   "label": "Espada"
+  },
+  {
+   "fieldname": "cintura",
+   "fieldtype": "Data",
+   "label": "Cintura"
+  },
+  {
+   "fieldname": "gluteos",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Gluteos"
+  },
+  {
+   "fieldname": "pierna",
+   "fieldtype": "Data",
+   "label": "Pierna"
+  },
+  {
+   "fieldname": "pantorrilla",
+   "fieldtype": "Data",
+   "label": "Pantorrilla"
+  },
+  {
+   "fieldname": "column_break_pjzd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Today",
+   "fieldname": "fecha_de_registro",
+   "fieldtype": "Date",
+   "label": "Fecha de Registro"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-09-29 22:39:16.645513",
+ "modified_by": "Administrator",
+ "module": "Gym BMARC",
+ "name": "Medidas",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

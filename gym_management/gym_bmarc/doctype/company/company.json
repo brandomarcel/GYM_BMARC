@@ -6,6 +6,7 @@
  "engine": "InnoDB",
  "field_order": [
   "name_company",
+  "logo",
   "section_break_biac",
   "planes_contratados_id"
  ],
@@ -27,11 +28,16 @@
   {
    "fieldname": "section_break_biac",
    "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "logo",
+   "fieldtype": "Attach Image",
+   "label": "Logo"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-09-18 12:24:01.774324",
+ "modified": "2024-09-29 23:05:05.279449",
  "modified_by": "Administrator",
  "module": "Gym BMARC",
  "name": "Company",

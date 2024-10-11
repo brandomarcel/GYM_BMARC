@@ -5,31 +5,33 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "cliente_tab",
+  "informaci\u00f3n_cliente_section",
   "first_name",
   "email",
   "gender",
   "username",
+  "full_name",
   "column_break_wbqy",
   "last_name",
   "phone",
   "fecha_de_nacimiento",
   "company_id",
-  "section_break_jifb",
-  "memberhips_acquire_id"
+  "medidas",
+  "medidas_section",
+  "altura",
+  "table_medidas"
  ],
  "fields": [
   {
    "fieldname": "first_name",
    "fieldtype": "Data",
-   "in_list_view": 1,
    "label": "Nombres",
    "reqd": 1
   },
   {
    "fieldname": "last_name",
    "fieldtype": "Data",
-   "in_list_view": 1,
-   "in_standard_filter": 1,
    "label": "Apellidos",
    "reqd": 1
   },
@@ -52,6 +54,8 @@
   {
    "fieldname": "username",
    "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Usuario",
    "reqd": 1,
    "unique": 1
@@ -59,6 +63,7 @@
   {
    "fieldname": "phone",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Tel\u00e9fono",
    "length": 10
   },
@@ -74,20 +79,48 @@
    "label": "Fecha de Nacimiento"
   },
   {
-   "fieldname": "section_break_jifb",
-   "fieldtype": "Section Break"
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "label": "Nombre Completo",
+   "read_only_depends_on": "eval:frappe.session.user != 'Administrator'"
   },
   {
-   "fieldname": "memberhips_acquire_id",
+   "fieldname": "cliente_tab",
+   "fieldtype": "Tab Break",
+   "label": "Cliente"
+  },
+  {
+   "fieldname": "informaci\u00f3n_cliente_section",
+   "fieldtype": "Section Break",
+   "label": "Informaci\u00f3n Cliente"
+  },
+  {
+   "fieldname": "medidas",
+   "fieldtype": "Tab Break",
+   "label": "Medidas",
+   "read_only": 1
+  },
+  {
+   "fieldname": "table_medidas",
    "fieldtype": "Table",
-   "label": "Membres\u00edas Adquiridas",
-   "options": "memberships_acquired"
+   "label": "Medidas",
+   "options": "Medidas"
+  },
+  {
+   "fieldname": "medidas_section",
+   "fieldtype": "Section Break",
+   "label": "Detalle de Medidas"
+  },
+  {
+   "fieldname": "altura",
+   "fieldtype": "Data",
+   "label": "Tu altura (en metros. Ej. 1.80)"
   }
  ],
  "hide_toolbar": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-09-18 12:43:44.196902",
+ "modified": "2024-10-08 14:33:23.490098",
  "modified_by": "Administrator",
  "module": "Gym BMARC",
  "name": "Customer",
@@ -106,7 +139,9 @@
    "write": 1
   }
  ],
+ "show_title_field_in_link": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "title_field": "full_name"
 }
