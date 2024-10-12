@@ -1,9 +1,9 @@
 [project]
 name = "gym_management"
 authors = [
-    { name = "S/N", email = "brandocevallos@gmail.com"}
+    { name = "N/A", email = "brandocevallos93@gmail.com"}
 ]
-description = "Administration GYM's"
+description = "Administracion de Gimnasios"
 requires-python = ">=3.10"
 readme = "README.md"
 dynamic = ["version"]

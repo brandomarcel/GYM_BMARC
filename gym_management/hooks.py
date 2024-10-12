@@ -1,10 +1,25 @@
 app_name = "gym_management"
-app_title = "Gym BMARC"
-app_publisher = "S/N"
-app_description = "Administration GYM\'s"
-app_email = "brandocevallos@gmail.com"
+app_title = "GYM-GEST"
+app_publisher = "N/A"
+app_description = "Administracion de Gimnasios"
+app_email = "brandocevallos93@gmail.com"
 app_license = "mit"
+
+# Apps
+# ------------------
+
 # required_apps = []
+
+# Each item in the list will be shown as an app in the apps page
+# add_to_apps_screen = [
+# 	{
+# 		"name": "gym_management",
+# 		"logo": "/assets/gym_management/logo.png",
+# 		"title": "GYM-GEST",
+# 		"route": "/gym_management",
+# 		"has_permission": "gym_management.api.permission.has_app_permission"
+# 	}
+# ]
 
 # Includes in <head>
 # ------------------
@@ -26,7 +41,6 @@ app_license = "mit"
 
 # include js in page
 # page_js = {"page" : "public/js/file.js"}
-
 
 # include js in doctype views
 # doctype_js = {"doctype" : "public/js/doctype.js"}

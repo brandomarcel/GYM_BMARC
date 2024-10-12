@@ -1,6 +1,6 @@
-## Gym BMARC
+## GYM-GEST
 
-Administration GYM's
+Administracion de Gimnasios
 
 #### License
 
