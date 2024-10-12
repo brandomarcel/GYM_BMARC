@@ -1,0 +1,34 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"XWyvSmjeoU\",\"type\":\"header\",\"data\":{\"text\":\"<span style=\\\"font-size: 18px; letter-spacing: 0.18px;\\\"><b>Membres\u00edas a Finalizar</b></span>\",\"col\":12}},{\"id\":\"aCvRjQLA8d\",\"type\":\"custom_block\",\"data\":{\"custom_block_name\":\"Gym-Gest\",\"col\":12}}]",
+ "creation": "2024-10-10 15:55:56.388107",
+ "custom_blocks": [
+  {
+   "custom_block_name": "Gym-Gest",
+   "label": "Gym-Gest"
+  }
+ ],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "list",
+ "idx": 0,
+ "indicator_color": "green",
+ "is_hidden": 0,
+ "label": "Membresias",
+ "links": [],
+ "modified": "2024-10-11 22:02:11.775399",
+ "modified_by": "Administrator",
+ "module": "Gym BMARC",
+ "name": "Membresias",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 3.0,
+ "shortcuts": [],
+ "title": "Membresias"
+}
