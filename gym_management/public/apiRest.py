@@ -6,7 +6,8 @@ def get_company_and_plans(user):
     company_name = frappe.get_value("User Permission", {"user": user, "allow": "Company"}, "for_value")
 
     if not company_name:
-        frappe.throw("No se ha encontrado una compañía asociada al usuario.")
+        return ''
+        # frappe.throw("No se ha encontrado una compañía asociada al usuario.")
     
     # Obtener los detalles de la compañía
     company = frappe.get_doc("Company", company_name)

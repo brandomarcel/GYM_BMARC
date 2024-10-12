@@ -6,7 +6,7 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "cliente_section",
+  "venta_section",
   "product_id",
   "description",
   "column_break_xsge",
@@ -14,11 +14,6 @@
   "company_id"
  ],
  "fields": [
-  {
-   "fieldname": "cliente_section",
-   "fieldtype": "Section Break",
-   "label": "Informaci\u00f3n de Cliente"
-  },
   {
    "depends_on": "eval:frappe.session.user == 'Administrator'",
    "fieldname": "company_id",
@@ -43,7 +38,7 @@
   {
    "fetch_from": "product_id.last_name",
    "fieldname": "description",
-   "fieldtype": "Read Only",
+   "fieldtype": "Data",
    "label": "Descripci\u00f3n"
   },
   {
@@ -52,11 +47,16 @@
    "fieldtype": "Currency",
    "label": "Precio",
    "precision": "2"
+  },
+  {
+   "fieldname": "venta_section",
+   "fieldtype": "Section Break",
+   "label": "Informacion de Venta"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-10-09 17:13:33.387388",
+ "modified": "2024-10-11 22:39:47.756774",
  "modified_by": "Administrator",
  "module": "Gym BMARC",
  "name": "sales_products",

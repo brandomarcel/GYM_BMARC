@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\":\"ZrIa_h8tw3\",\"type\":\"custom_block\",\"data\":{\"custom_block_name\":\"Cabecera GYM\",\"col\":12}},{\"id\":\"tRvIKp54MA\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Acceso Rapido</b></span>\",\"col\":12}},{\"id\":\"1CkS2CC4sd\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"NUEVA MEMBRES\u00cdA\",\"col\":3}},{\"id\":\"6x_kahP_Se\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"REGISTRAR VENTA\",\"col\":3}},{\"id\":\"s-AmCmPxAZ\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"P7XdMh4Hhz\",\"type\":\"card\",\"data\":{\"card_name\":\"Mi GIMNASIO\",\"col\":3}},{\"id\":\"poAsVUuTv2\",\"type\":\"card\",\"data\":{\"card_name\":\"Clientes\",\"col\":3}},{\"id\":\"AJGdm3kxav\",\"type\":\"card\",\"data\":{\"card_name\":\"Tipo de Membres\u00edas\",\"col\":3}},{\"id\":\"CT6Ud4sLo6\",\"type\":\"card\",\"data\":{\"card_name\":\"Productos\",\"col\":3}}]",
+ "content": "[{\"id\":\"ZrIa_h8tw3\",\"type\":\"custom_block\",\"data\":{\"custom_block_name\":\"Cabecera GYM\",\"col\":12}},{\"id\":\"tRvIKp54MA\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Acceso Rapido</b></span>\",\"col\":12}},{\"id\":\"1CkS2CC4sd\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"NUEVA MEMBRES\u00cdA\",\"col\":4}},{\"id\":\"6x_kahP_Se\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"REGISTRAR VENTA\",\"col\":4}},{\"id\":\"mGMbexVuMx\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"P7XdMh4Hhz\",\"type\":\"card\",\"data\":{\"card_name\":\"Mi GIMNASIO\",\"col\":3}},{\"id\":\"poAsVUuTv2\",\"type\":\"card\",\"data\":{\"card_name\":\"Clientes\",\"col\":3}},{\"id\":\"AJGdm3kxav\",\"type\":\"card\",\"data\":{\"card_name\":\"Tipo de Membres\u00edas\",\"col\":3}},{\"id\":\"CT6Ud4sLo6\",\"type\":\"card\",\"data\":{\"card_name\":\"Productos\",\"col\":3}}]",
  "creation": "2024-09-16 17:21:31.503032",
  "custom_blocks": [
   {
@@ -125,7 +125,7 @@
    "type": "Link"
   }
  ],
- "modified": "2024-10-10 15:56:00.748083",
+ "modified": "2024-10-11 22:26:09.522763",
  "modified_by": "Administrator",
  "module": "Gym BMARC",
  "name": "Principal",
