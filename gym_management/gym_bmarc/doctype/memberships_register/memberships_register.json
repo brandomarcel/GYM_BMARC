@@ -12,19 +12,27 @@
   "time_month",
   "date_ini",
   "date_fin",
+  "nombre_plan",
   "column_break_auvg",
   "cost",
   "discount",
   "iva",
   "total",
+  "column_break_sytz",
+  "recibo_html",
+  "recibo_info",
   "cliente_section",
   "customer_id",
   "correo_electr\u00f3nico",
   "company_id",
+  "name_customer",
   "column_break_xsge",
   "usuario",
   "phone",
-  "status"
+  "status",
+  "forma_de_pago_tab",
+  "payment",
+  "payment_table"
  ],
  "fields": [
   {
@@ -153,11 +161,56 @@
    "label": "Estado",
    "options": "Activo\nInactivo",
    "reqd": 1
+  },
+  {
+   "fieldname": "column_break_sytz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "recibo_info",
+   "fieldtype": "Small Text",
+   "hidden": 1,
+   "label": "Recibo",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "plan.name_type",
+   "fieldname": "nombre_plan",
+   "fieldtype": "Read Only",
+   "hidden": 1,
+   "label": "Nombre Plan"
+  },
+  {
+   "fetch_from": "customer_id.full_name",
+   "fieldname": "name_customer",
+   "fieldtype": "Read Only",
+   "hidden": 1,
+   "label": "Nombre Cliente"
+  },
+  {
+   "fieldname": "recibo_html",
+   "fieldtype": "HTML",
+   "label": "Informaci\u00f3n de Recibo"
+  },
+  {
+   "fieldname": "payment",
+   "fieldtype": "Section Break",
+   "label": "Pagos"
+  },
+  {
+   "fieldname": "payment_table",
+   "fieldtype": "Table",
+   "options": "payment_method"
+  },
+  {
+   "fieldname": "forma_de_pago_tab",
+   "fieldtype": "Tab Break",
+   "label": "Forma de Pago"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-10-11 00:01:30.468456",
+ "modified": "2024-10-20 18:52:38.421784",
  "modified_by": "Administrator",
  "module": "Gym BMARC",
  "name": "memberships_register",

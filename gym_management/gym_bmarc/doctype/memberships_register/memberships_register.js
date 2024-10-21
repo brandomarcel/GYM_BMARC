@@ -3,21 +3,75 @@ var planOriginal = '';
 frappe.ui.form.on("memberships_register", {
     refresh(frm) {
         console.log(frm.is_new);
-        $(frm.fields_dict.discount.wrapper).find('.help-box').css({
-            'color': 'blue',            // Cambiar el color del texto a azul
-            'font-size': '14px',         // Ajustar el tamaño de la fuente
-            'font-weight': 'bold',       // Hacer el texto negrita
-            'background-color': '#f0f8ff', // Fondo suave
-            'padding': '5px',            // Espacio interno (padding)
-            'border-radius': '5px'       // Bordes redondeados
-        });
-
+        if (frm.is_new()) {
+            frm.fields_dict['recibo_html'].html(null);
+        }
         // Si el documento no es nuevo y tiene un plan seleccionado, cargamos el plan original
         if (!frm.is_new() && frm.doc.plan) {
+            // Agregar botón personalizado con ícono y color de WhatsApp
+            frm.add_custom_button(__('Enviar por WhatsApp'), function () {
+                // Formatear el mensaje a enviar
+                let mensaje = `
+            ${frm.doc.recibo_info}
+            `;
+
+                // Número de teléfono (reemplazar por uno dinámico si es necesario)
+                let numero_telefono = `${frm.doc.phone}`; // Formato internacional (sin '+', guiones o espacios)
+
+                // Codificar el mensaje para URL
+                let url = `https://wa.me/+593${numero_telefono}?text=${encodeURIComponent(mensaje)}`;
+
+                // Abrir la URL en una nueva pestaña
+                window.open(url);
+            }, 'fa fa-whatsapp').css({
+                'background-color': '#25D366', // Color verde de WhatsApp
+                'color': 'white',              // Texto en blanco
+                'border-color': '#25D366'      // Borde verde de WhatsApp
+            });
+            let recibo_html = `
+    <div style="
+        border: 2px solid #25D366; 
+        padding: 15px; 
+        background-color: #f9f9f9; 
+        border-radius: 10px;
+        margin-top: 10px;
+    ">
+    <p><strong>RESUMEN</strong></p>
+        <p><strong>Servicio Contratado:</strong> ${frm.doc.nombre_plan}</p>
+        <p><strong>Inicio:</strong> ${frm.doc.date_ini}</p>
+        <p><strong>Caduca:</strong> ${frm.doc.date_fin}</p>
+        <p><strong>Costo de Plan:</strong> $${frm.doc.cost} Dolares</p>
+        <p><strong>Descuento:</strong> $${frm.doc.discount || 0.00} Dolares</p>
+        <p><strong>Total Pagado:</strong> $${frm.doc.total} Dolares</p>
+        <p><strong>Cajero:</strong> ${frm.doc.owner}</p>
+        <p>Gracias por preferirnos.</p>
+    </div>
+`;
+
+            // Asignar el contenido HTML al campo 'recibo_html'
+            frm.fields_dict['recibo_html'].html(recibo_html);
             console.log('no es nuevo');
             loadPlanOriginal(frm);
         }
     },
+
+    validate: function (frm) {
+        // Formatear el contenido del recibo usando datos del formulario
+        let recibo_info = `
+        Servicio Contratado: ${frm.doc.nombre_plan}
+        Inicio: ${frm.doc.date_ini}
+        Caduca: ${frm.doc.date_fin}
+        Costo de Plan: $${frm.doc.cost} Dolares
+        Descuento: $${frm.doc.discount || 0.00} Dolares
+        Total Pagado: $${frm.doc.total} Dolares
+        Cajero: ${frm.doc.owner}
+        Gracias por preferirnos.
+    `;
+
+        // Guardar la información del recibo en el campo 'recibo_info'
+        frm.set_value('recibo_info', recibo_info);
+    },
+
     plan: function (frm) {
         console.log('frm', frm);
 
@@ -72,7 +126,7 @@ frappe.ui.form.on("memberships_register", {
             frm.set_value('total', valTotal);
         }
 
-        if (frm.doc.discount == 0 ) {
+        if (frm.doc.discount == 0) {
             console.log('entro discount 0');
             frm.set_value('total', planOriginal.total);
         }

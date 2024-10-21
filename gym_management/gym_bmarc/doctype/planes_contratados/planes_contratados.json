@@ -8,9 +8,10 @@
  "field_order": [
   "plan_id",
   "date_ini",
-  "date_fin",
+  "status",
+  "column_break_xjue",
   "cost",
-  "status"
+  "date_fin"
  ],
  "fields": [
   {
@@ -46,12 +47,16 @@
    "fieldtype": "Select",
    "label": "Estado",
    "options": "Activo\nInactivo"
+  },
+  {
+   "fieldname": "column_break_xjue",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-10-10 11:32:03.194353",
+ "modified": "2024-10-20 19:34:03.872406",
  "modified_by": "Administrator",
  "module": "Gym BMARC",
  "name": "Planes Contratados",

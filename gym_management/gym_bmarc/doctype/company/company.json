@@ -6,6 +6,7 @@
  "engine": "InnoDB",
  "field_order": [
   "name_company",
+  "column_break_qkqj",
   "logo",
   "section_break_biac",
   "planes_contratados_id"
@@ -21,23 +22,30 @@
   {
    "fieldname": "planes_contratados_id",
    "fieldtype": "Table",
-   "label": "Planes Contratados",
    "options": "Planes Contratados",
    "read_only_depends_on": "eval:frappe.session.user != 'Administrator'"
   },
   {
    "fieldname": "section_break_biac",
-   "fieldtype": "Section Break"
+   "fieldtype": "Section Break",
+   "label": "Planes Contratados"
   },
   {
    "fieldname": "logo",
    "fieldtype": "Attach Image",
    "label": "Logo"
+  },
+  {
+   "fieldname": "column_break_qkqj",
+   "fieldtype": "Column Break"
   }
  ],
+ "image_field": "logo",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-09-29 23:05:05.279449",
+ "make_attachments_public": 1,
+ "max_attachments": 1,
+ "modified": "2024-10-20 19:37:05.464957",
  "modified_by": "Administrator",
  "module": "Gym BMARC",
  "name": "Company",

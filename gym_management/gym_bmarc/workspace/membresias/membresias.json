@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\":\"XWyvSmjeoU\",\"type\":\"header\",\"data\":{\"text\":\"<span style=\\\"font-size: 18px; letter-spacing: 0.18px;\\\"><b>Membres\u00edas a Finalizar</b></span>\",\"col\":12}},{\"id\":\"aCvRjQLA8d\",\"type\":\"custom_block\",\"data\":{\"custom_block_name\":\"Gym-Gest\",\"col\":12}}]",
+ "content": "[{\"id\":\"XWyvSmjeoU\",\"type\":\"header\",\"data\":{\"text\":\"<span style=\\\"font-size: 18px; letter-spacing: 0.18px;\\\"><b>Pr\u00f3ximas 20 Membres\u00edas a Finalizar</b></span>\",\"col\":12}},{\"id\":\"aCvRjQLA8d\",\"type\":\"custom_block\",\"data\":{\"custom_block_name\":\"Gym-Gest\",\"col\":12}}]",
  "creation": "2024-10-10 15:55:56.388107",
  "custom_blocks": [
   {
@@ -18,7 +18,7 @@
  "is_hidden": 0,
  "label": "Membresias",
  "links": [],
- "modified": "2024-10-11 22:02:11.775399",
+ "modified": "2024-10-12 15:47:09.404428",
  "modified_by": "Administrator",
  "module": "Gym BMARC",
  "name": "Membresias",
