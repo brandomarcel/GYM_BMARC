@@ -1,6 +1,9 @@
 {
  "actions": [],
- "allow_rename": 1,
+ "allow_auto_repeat": 1,
+ "allow_copy": 1,
+ "allow_events_in_timeline": 1,
+ "allow_import": 1,
  "creation": "2024-09-18 12:03:24.448732",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -48,6 +51,7 @@
    "default": "Today",
    "fieldname": "date_ini",
    "fieldtype": "Date",
+   "in_filter": 1,
    "in_list_view": 1,
    "in_preview": 1,
    "in_standard_filter": 1,
@@ -57,7 +61,9 @@
   {
    "fieldname": "date_fin",
    "fieldtype": "Date",
+   "in_filter": 1,
    "in_list_view": 1,
+   "in_preview": 1,
    "in_standard_filter": 1,
    "label": "Fecha de Fin",
    "reqd": 1
@@ -208,9 +214,10 @@
    "label": "Forma de Pago"
   }
  ],
+ "hide_toolbar": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-10-20 18:52:38.421784",
+ "modified": "2024-11-10 21:39:34.371065",
  "modified_by": "Administrator",
  "module": "Gym BMARC",
  "name": "memberships_register",

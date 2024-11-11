@@ -1,6 +1,9 @@
 {
  "actions": [],
- "allow_rename": 1,
+ "allow_auto_repeat": 1,
+ "allow_copy": 1,
+ "allow_events_in_timeline": 1,
+ "allow_import": 1,
  "creation": "2024-09-16 15:18:15.954187",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -17,6 +20,8 @@
   "phone",
   "fecha_de_nacimiento",
   "company_id",
+  "qr_code",
+  "qr_code_html",
   "medidas",
   "medidas_section",
   "altura",
@@ -65,7 +70,8 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Tel\u00e9fono",
-   "length": 10
+   "length": 10,
+   "reqd": 1
   },
   {
    "fieldname": "gender",
@@ -115,12 +121,24 @@
    "fieldname": "altura",
    "fieldtype": "Data",
    "label": "Tu altura (en metros. Ej. 1.80)"
+  },
+  {
+   "depends_on": "eval:frappe.session.user == 'Administrator'",
+   "fieldname": "qr_code",
+   "fieldtype": "Text",
+   "label": "QR"
+  },
+  {
+   "fieldname": "qr_code_html",
+   "fieldtype": "HTML",
+   "label": "QR Imagen"
   }
  ],
  "hide_toolbar": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-10-08 14:33:23.490098",
+ "make_attachments_public": 1,
+ "modified": "2024-11-10 21:36:58.270725",
  "modified_by": "Administrator",
  "module": "Gym BMARC",
  "name": "Customer",
@@ -143,5 +161,6 @@
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": [],
- "title_field": "full_name"
+ "title_field": "full_name",
+ "translated_doctype": 1
 }

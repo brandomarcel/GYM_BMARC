@@ -1,125 +1,66 @@
-// Copyright (c) 2024, S/N and contributors
-// For license information, please see license.txt
-
 frappe.ui.form.on('Customer', {
-    before_insert: function(frm) {
-        if (!frm.doc.company) {
-            frappe.call({
-                method: "frappe.client.get_value",
-                args: {
-                    doctype: "User",
-                    filters: {
-                        'name': frappe.session.user
-                    },
-                    fieldname: "default_company"
-                },
-                callback: function(r) {
-                    if (r.message) {
-                        frm.set_value("company", r.message.default_company);
-                    }
-                }
-            });
-        }
-    },
-    validate: function(frm) {
-        const phone = frm.doc.phone;
-        const phone_regex = /^\d{10}$/;
-        if (!phone_regex.test(phone)) {
-            frappe.msgprint(__('El número de teléfono debe tener exactamente 10 dígitos.'));
-            frappe.validated = false;
-        }
-    },
-    first_name: function(frm) {
-        frm.set_value('full_name', frm.doc.first_name + ' ' + frm.doc.last_name);
-    },
-    last_name: function(frm) {
-        frm.set_value('full_name', frm.doc.first_name + ' ' + frm.doc.last_name);
-    },
+    refresh(frm) {
+        frm.fields_dict['qr_code_html'].wrapper.innerHTML = ``;
 
+        if (frm.doc.qr_code) {
+            // frm.add_custom_button(__('Enviar QR por WhatsApp'), function() {
+            //     sendQRCodeViaWhatsApp(frm);
+            // });
+            frm.fields_dict['qr_code_html'].wrapper.innerHTML = `
+                <img src="${frm.doc.qr_code}" alt="Código QR" id="qr_image" style="margin-right: 10px;">
+                
+            `;
+
+        }
+    },
+    
+    after_save(frm) {
+        if (!frm.doc.qr_code) {
+            generateQRCode(frm);
+        }
+    },
 });
 
+async function generateQRCode(frm) {
+    try {
+        const data = `${frm.doc.name}` || "Texto de Ejemplo";
+        const qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(data)}&size=150x150&format=png`;
+
+        const response = await fetch(qrApiUrl);
+        const blob = await response.blob();
+        const reader = new FileReader();
+
+        reader.onload = async function () {
+            frm.set_value('qr_code', reader.result);
+            frm.refresh_field('qr_code');
+
+            frm.fields_dict['qr_code_html'].wrapper.innerHTML = `
+                <img src="${frm.doc.qr_code}" alt="Código QR" id="qr_image" style="margin-right: 10px;">
+                <button class="btn btn-primary btn-sm" id="copy_qr_button">Copiar Imagen</button>
+            `;
+            
+            document.getElementById("copy_qr_button").addEventListener("click", copyQRCodeURL);
+            await frm.save();
+        };
+
+        reader.readAsDataURL(blob);
+    } catch (error) {
+        console.error("Error al generar el QR:", error);
+    }
+}
 
 
+// Función para enviar el QR por WhatsApp
+function sendQRCodeViaWhatsApp(frm) {
+    const phone_number = frm.doc.phone;
+    if (!phone_number) {
+        frappe.msgprint(__('Por favor, ingresa un número de teléfono para enviar el QR.'));
+        return;
+    }
 
+    const message = `Hola, aquí está el código QR que solicitaste: ${frm.doc.qr_code}`;
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/+593${phone_number}?text=${encodedMessage}`;
 
-
-frappe.ui.form.on('memberships_acquired', {
-    plan: function (frm, cdt, cdn) {
-        var row = locals[cdt][cdn];  // Obtiene la fila actual de la tabla secundaria
-
-        if (row.plan) {
-            console.log('Plan seleccionado:', row.plan);
-
-            frappe.call({
-                method: 'frappe.client.get',
-                args: {
-                    doctype: 'Membership_Type',  // Asegúrate de que este sea el Doctype correcto
-                    name: row.plan   // El valor seleccionado en el campo 'plan'
-                },
-                callback: function (r) {
-                    if (!r.exc && r.message) {
-                        console.log('Datos del Plan:', r.message);
-                        console.log('date_ini:', row.date_ini);
-                        console.log('time_month:', r.message.time_month);
-
-                        // Asigna el precio del plan obtenido a la fila actual
-                        // frappe.model.set_value(cdt, cdn, 'cost', r.message.cost);
-                        // console.log('Precio asignado:', r.message.cost);
-                        var fecha_inicio = frappe.datetime.add_months(row.date_ini, r.message.time_month);
-                        console.log('fecha_inicio:', fecha_inicio);
-                        // Establecer la nueva fecha fin un mes después
-                        frappe.model.set_value(cdt, cdn, 'date_fin', fecha_inicio);
-                    } else {
-                        frappe.msgprint(__('No se encontró el plan o no tiene un precio asignado.'));
-                    }
-                },
-                error: function (err) {
-                    console.error('Error al obtener el plan:', err);
-                    frappe.msgprint(__('Hubo un error al obtener el plan.'));
-                }
-            });
-        } else {
-            frappe.msgprint(__('Por favor, selecciona un plan.'));
-        }
-    },
-
-    date_ini: function (frm, cdt, cdn) {
-        var row = locals[cdt][cdn];  // Obtiene la fila actual de la tabla secundaria
-
-        if (row.plan) {
-            console.log('Plan seleccionado:', row.plan);
-
-            frappe.call({
-                method: 'frappe.client.get',
-                args: {
-                    doctype: 'Membership_Type',  // Asegúrate de que este sea el Doctype correcto
-                    name: row.plan   // El valor seleccionado en el campo 'plan'
-                },
-                callback: function (r) {
-                    if (!r.exc && r.message) {
-                        console.log('Datos del Plan:', r.message);
-                        console.log('date_ini:', row.date_ini);
-                        console.log('time_month:', r.message.time_month);
-
-                        // Asigna el precio del plan obtenido a la fila actual
-                        // frappe.model.set_value(cdt, cdn, 'cost', r.message.cost);
-                        // console.log('Precio asignado:', r.message.cost);
-                        var fecha_inicio = frappe.datetime.add_months(row.date_ini, r.message.time_month);
-                        console.log('fecha_inicio:', fecha_inicio);
-                        // Establecer la nueva fecha fin un mes después
-                        frappe.model.set_value(cdt, cdn, 'date_fin', fecha_inicio);
-                    } else {
-                        frappe.msgprint(__('No se encontró el plan o no tiene un precio asignado.'));
-                    }
-                },
-                error: function (err) {
-                    console.error('Error al obtener el plan:', err);
-                    frappe.msgprint(__('Hubo un error al obtener el plan.'));
-                }
-            });
-        } else {
-            frappe.msgprint(__('Por favor, selecciona un plan.'));
-        }
-    },
-
-});
+    window.open(whatsappUrl, '_blank');
+}

@@ -1,0 +1,36 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"IliiOn-zVv\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Reportes</span>\",\"col\":12}},{\"id\":\"Ykdqu-CChn\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Membres\u00edas Registradas\",\"col\":4}}]",
+ "creation": "2024-10-10 16:00:25.158354",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "idx": 0,
+ "indicator_color": "orange",
+ "is_hidden": 0,
+ "label": "Reportes",
+ "links": [],
+ "modified": "2024-11-06 16:16:47.669668",
+ "modified_by": "Administrator",
+ "module": "Gym BMARC",
+ "name": "Reportes",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 23.0,
+ "shortcuts": [
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Membres\u00edas Registradas",
+   "link_to": "Membresias Registradas",
+   "type": "Report"
+  }
+ ],
+ "title": "Reportes"
+}

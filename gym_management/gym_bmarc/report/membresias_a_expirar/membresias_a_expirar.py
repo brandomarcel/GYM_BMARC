@@ -32,7 +32,7 @@ def execute(filters=None):
             COALESCE(p.name_type, 'Unknown') as plan_name,
             mr.date_ini,
             mr.date_fin,
-            DATEDIFF(mr.date_fin, %(today_date)s) as days_left  -- Calcular los días restantes
+            IF( (DATEDIFF(mr.date_fin, %(today_date)s)) <=0 , "FINALIZO", DATEDIFF(mr.date_fin, %(today_date)s)) as days_left  -- Calcular los días restantes
         FROM 
             `tabmemberships_register` mr
         LEFT JOIN 
