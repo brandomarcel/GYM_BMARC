@@ -1,8 +1,8 @@
 app_name = "gym_management"
-app_title = "GYM-GEST"
-app_publisher = "N/A"
-app_description = "Administracion de Gimnasios"
-app_email = "brandocevallos93@gmail.com"
+app_title = "Gym BMARC"
+app_publisher = "GYM"
+app_description = "App para gestion de gimnacios"
+app_email = "brandocevallos@bmarc-corp.com"
 app_license = "mit"
 
 # Apps
@@ -15,7 +15,7 @@ app_license = "mit"
 # 	{
 # 		"name": "gym_management",
 # 		"logo": "/assets/gym_management/logo.png",
-# 		"title": "GYM-GEST",
+# 		"title": "Gym BMARC",
 # 		"route": "/gym_management",
 # 		"has_permission": "gym_management.api.permission.has_app_permission"
 # 	}
@@ -241,4 +241,9 @@ app_license = "mit"
 # default_log_clearing_doctypes = {
 # 	"Logging DocType Name": 30  # days to retain logs
 # }
+
+# Translation
+# ------------
+# List of apps whose translatable strings should be excluded from this app's translations.
+# ignore_translatable_strings_from = []
 
