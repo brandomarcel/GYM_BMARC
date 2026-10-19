@@ -1,0 +1,31 @@
+{
+  "doctype": "DocType",
+  "name": "GYM Membership Branch",
+  "module": "Gym BMARC",
+  "engine": "InnoDB",
+  "autoname": "hash",
+  "allow_rename": 0,
+  "track_changes": 1,
+  "index_web_pages_for_search": 0,
+  "make_attachments_public": 0,
+  "fields": [
+    {
+      "fieldname": "branch",
+      "fieldtype": "Link",
+      "label": "Sucursal",
+      "options": "GYM Branch",
+      "reqd": 1,
+      "in_list_view": 1
+    }
+  ],
+  "field_order": [
+    "branch"
+  ],
+  "permissions": [],
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "actions": [],
+  "links": [],
+  "states": [],
+  "istable": 1
+}

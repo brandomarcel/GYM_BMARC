@@ -1,0 +1,317 @@
+{
+  "doctype": "DocType",
+  "name": "GYM Membership",
+  "module": "Gym BMARC",
+  "engine": "InnoDB",
+  "autoname": "hash",
+  "allow_rename": 0,
+  "track_changes": 1,
+  "index_web_pages_for_search": 0,
+  "make_attachments_public": 0,
+  "fields": [
+    {
+      "fieldname": "business",
+      "fieldtype": "Link",
+      "label": "Negocio",
+      "options": "FacturADA Business",
+      "reqd": 1,
+      "search_index": 1
+    },
+    {
+      "fieldname": "origin_branch",
+      "fieldtype": "Link",
+      "label": "Sucursal de contratación",
+      "options": "GYM Branch",
+      "reqd": 1,
+      "in_list_view": 1,
+      "search_index": 1
+    },
+    {
+      "fieldname": "member",
+      "fieldtype": "Link",
+      "label": "Socio",
+      "options": "GYM Member",
+      "reqd": 1,
+      "in_list_view": 1,
+      "search_index": 1
+    },
+    {
+      "fieldname": "plan",
+      "fieldtype": "Link",
+      "label": "Plan contratado",
+      "options": "GYM Membership Plan",
+      "reqd": 1
+    },
+    {
+      "fieldname": "previous_membership",
+      "fieldtype": "Link",
+      "label": "Contrato anterior",
+      "options": "GYM Membership"
+    },
+    {
+      "fieldname": "start_date",
+      "fieldtype": "Date",
+      "label": "Fecha de inicio",
+      "reqd": 1,
+      "in_list_view": 1,
+      "default": "Today"
+    },
+    {
+      "fieldname": "end_date",
+      "fieldtype": "Date",
+      "label": "Vence",
+      "read_only": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "duration",
+      "fieldtype": "Int",
+      "label": "Duración",
+      "reqd": 1,
+      "default": "1",
+      "read_only": 1
+    },
+    {
+      "fieldname": "duration_unit",
+      "fieldtype": "Select",
+      "label": "Unidad",
+      "options": "Dias\nMeses",
+      "reqd": 1,
+      "default": "Meses",
+      "read_only": 1
+    },
+    {
+      "fieldname": "price",
+      "fieldtype": "Currency",
+      "label": "Precio pactado",
+      "options": "currency",
+      "reqd": 1,
+      "read_only": 1
+    },
+    {
+      "fieldname": "currency",
+      "fieldtype": "Link",
+      "label": "Moneda",
+      "options": "Currency",
+      "default": "USD",
+      "reqd": 1,
+      "read_only": 1
+    },
+    {
+      "fieldname": "access_mode",
+      "fieldtype": "Select",
+      "label": "Acceso",
+      "options": "Una sede\nVarias sedes\nTodas las sedes",
+      "reqd": 1,
+      "default": "Una sede",
+      "read_only": 1
+    },
+    {
+      "fieldname": "branches",
+      "fieldtype": "Table",
+      "label": "Sedes incluidas",
+      "options": "GYM Membership Branch",
+      "read_only": 1,
+      "depends_on": "eval:doc.access_mode === \"Varias sedes\""
+    },
+    {
+      "fieldname": "renewal_mode",
+      "fieldtype": "Select",
+      "label": "Renovación",
+      "options": "Continua\nDesde regreso\nFecha elegida",
+      "reqd": 1,
+      "default": "Desde regreso",
+      "read_only": 1
+    },
+    {
+      "fieldname": "payment_policy",
+      "fieldtype": "Select",
+      "label": "Condición de pago",
+      "options": "Completo\nAbonos\nCredito",
+      "reqd": 1,
+      "default": "Completo",
+      "read_only": 1
+    },
+    {
+      "fieldname": "minimum_percentage",
+      "fieldtype": "Percent",
+      "label": "Porcentaje mínimo para acceso",
+      "default": "100",
+      "read_only": 1
+    },
+    {
+      "fieldname": "grace_days",
+      "fieldtype": "Int",
+      "label": "Días de gracia para deuda",
+      "default": "0",
+      "read_only": 1
+    },
+    {
+      "fieldname": "discount",
+      "fieldtype": "Currency",
+      "label": "Descuento",
+      "default": "0",
+      "options": "currency",
+      "read_only_depends_on": "eval:!!doc.promotion"
+    },
+    {
+      "fieldname": "total",
+      "fieldtype": "Currency",
+      "label": "Total contratado",
+      "read_only": 1,
+      "options": "currency"
+    },
+    {
+      "fieldname": "payment_due_date",
+      "fieldtype": "Date",
+      "label": "Fecha límite de pago"
+    },
+    {
+      "fieldname": "credit_approved",
+      "fieldtype": "Check",
+      "label": "Crédito aprobado",
+      "read_only": 1,
+      "allow_on_submit": 1
+    },
+    {
+      "fieldname": "credit_approved_by",
+      "fieldtype": "Data",
+      "label": "Autorizado por",
+      "read_only": 1,
+      "allow_on_submit": 1
+    },
+    {
+      "fieldname": "credit_reason",
+      "fieldtype": "Small Text",
+      "label": "Motivo de autorización",
+      "allow_on_submit": 1
+    },
+    {
+      "fieldname": "discount_reason",
+      "fieldtype": "Small Text",
+      "label": "Motivo del descuento",
+      "read_only_depends_on": "eval:!!doc.promotion"
+    },
+    {
+      "fieldname": "request_key",
+      "fieldtype": "Data",
+      "label": "Clave de contratación",
+      "read_only": 1
+    },
+    {
+      "fieldname": "request_hash",
+      "fieldtype": "Data",
+      "label": "Huella de la solicitud",
+      "hidden": 1,
+      "read_only": 1
+    },
+    {
+      "fieldname": "promotion",
+      "label": "Promoción",
+      "fieldtype": "Link",
+      "options": "GYM Promotion"
+    },
+    {
+      "fieldname": "promotion_snapshot",
+      "label": "Condiciones de la promoción aplicada",
+      "fieldtype": "Code",
+      "options": "JSON",
+      "read_only": 1
+    },
+    {
+      "fieldname": "desk_section_0",
+      "fieldtype": "Section Break",
+      "label": "Socio y contratación",
+      "collapsible": 0
+    },
+    {
+      "fieldname": "desk_section_1",
+      "fieldtype": "Section Break",
+      "label": "Importe y pago",
+      "collapsible": 0
+    },
+    {
+      "fieldname": "desk_section_2",
+      "fieldtype": "Section Break",
+      "label": "Condiciones del plan",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "desk_section_3",
+      "fieldtype": "Section Break",
+      "label": "Autorización de crédito",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "desk_section_4",
+      "fieldtype": "Section Break",
+      "label": "Información técnica",
+      "collapsible": 1
+    }
+  ],
+  "field_order": [
+    "desk_section_0",
+    "business",
+    "origin_branch",
+    "member",
+    "plan",
+    "previous_membership",
+    "start_date",
+    "end_date",
+    "desk_section_1",
+    "price",
+    "currency",
+    "promotion",
+    "discount",
+    "discount_reason",
+    "total",
+    "payment_due_date",
+    "desk_section_2",
+    "duration",
+    "duration_unit",
+    "access_mode",
+    "branches",
+    "renewal_mode",
+    "payment_policy",
+    "minimum_percentage",
+    "grace_days",
+    "desk_section_3",
+    "credit_approved",
+    "credit_approved_by",
+    "credit_reason",
+    "desk_section_4",
+    "request_key",
+    "request_hash",
+    "promotion_snapshot"
+  ],
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "create": 1,
+      "write": 1,
+      "delete": 1,
+      "print": 1,
+      "submit": 1,
+      "cancel": 1,
+      "report": 1
+    },
+    {
+      "role": "GYM User",
+      "read": 1,
+      "create": 1,
+      "write": 1,
+      "delete": 1,
+      "print": 1,
+      "submit": 1,
+      "cancel": 1,
+      "report": 1
+    }
+  ],
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "actions": [],
+  "links": [],
+  "states": [],
+  "is_submittable": 1
+}

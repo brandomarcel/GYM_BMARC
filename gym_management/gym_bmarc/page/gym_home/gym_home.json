@@ -1,0 +1,17 @@
+{
+  "doctype": "Page",
+  "name": "gym-home",
+  "page_name": "gym-home",
+  "module": "Gym BMARC",
+  "standard": "Yes",
+  "title": "Inicio del gimnasio",
+  "system_page": 0,
+  "roles": [
+    {
+      "role": "GYM User"
+    },
+    {
+      "role": "System Manager"
+    }
+  ]
+}

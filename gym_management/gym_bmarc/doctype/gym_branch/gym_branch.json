@@ -1,0 +1,88 @@
+{
+  "doctype": "DocType",
+  "name": "GYM Branch",
+  "module": "Gym BMARC",
+  "engine": "InnoDB",
+  "autoname": "hash",
+  "allow_rename": 0,
+  "track_changes": 1,
+  "index_web_pages_for_search": 0,
+  "make_attachments_public": 0,
+  "field_order": [
+    "business",
+    "status",
+    "branch_code",
+    "branch_name",
+    "address",
+    "establishment"
+  ],
+  "fields": [
+    {
+      "fieldname": "business",
+      "fieldtype": "Link",
+      "label": "Negocio",
+      "options": "FacturADA Business",
+      "reqd": 1,
+      "search_index": 1
+    },
+    {
+      "fieldname": "status",
+      "fieldtype": "Select",
+      "label": "Estado",
+      "options": "Activo\nInactivo",
+      "default": "Activo",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "branch_code",
+      "fieldtype": "Data",
+      "label": "Código",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "branch_name",
+      "fieldtype": "Data",
+      "label": "Sucursal",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "address",
+      "fieldtype": "Small Text",
+      "label": "Dirección"
+    },
+    {
+      "fieldname": "establishment",
+      "fieldtype": "Link",
+      "label": "Establecimiento fiscal",
+      "options": "FacturADA Establishment"
+    }
+  ],
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "print": 1
+    },
+    {
+      "role": "GYM User",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "print": 1
+    }
+  ],
+  "title_field": "branch_name",
+  "search_fields": "branch_name",
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "actions": [],
+  "links": [],
+  "states": []
+}

@@ -1,0 +1,113 @@
+{
+  "doctype": "DocType",
+  "name": "GYM Attendance",
+  "module": "Gym BMARC",
+  "engine": "InnoDB",
+  "autoname": "hash",
+  "allow_rename": 0,
+  "track_changes": 1,
+  "index_web_pages_for_search": 0,
+  "make_attachments_public": 0,
+  "fields": [
+    {
+      "fieldname": "business",
+      "fieldtype": "Link",
+      "label": "Negocio",
+      "options": "FacturADA Business",
+      "reqd": 1,
+      "search_index": 1
+    },
+    {
+      "fieldname": "branch",
+      "fieldtype": "Link",
+      "label": "Sucursal",
+      "options": "GYM Branch",
+      "reqd": 1,
+      "in_list_view": 1,
+      "search_index": 1
+    },
+    {
+      "fieldname": "member",
+      "fieldtype": "Link",
+      "label": "Socio",
+      "options": "GYM Member",
+      "reqd": 1,
+      "search_index": 1
+    },
+    {
+      "fieldname": "membership",
+      "fieldtype": "Link",
+      "label": "Membresía evaluada",
+      "options": "GYM Membership",
+      "read_only": 1
+    },
+    {
+      "fieldname": "recorded_at",
+      "fieldtype": "Datetime",
+      "label": "Fecha y hora",
+      "read_only": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "result",
+      "fieldtype": "Select",
+      "label": "Acceso",
+      "options": "Permitido\nDenegado",
+      "read_only": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "reason",
+      "fieldtype": "Data",
+      "label": "Motivo",
+      "read_only": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "recorded_by",
+      "fieldtype": "Data",
+      "label": "Registrado por",
+      "read_only": 1
+    },
+    {
+      "fieldname": "request_key",
+      "fieldtype": "Data",
+      "label": "Clave de reintento",
+      "reqd": 1
+    }
+  ],
+  "field_order": [
+    "business",
+    "branch",
+    "member",
+    "membership",
+    "recorded_at",
+    "result",
+    "reason",
+    "recorded_by",
+    "request_key"
+  ],
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "create": 1,
+      "write": 1,
+      "delete": 1,
+      "print": 1
+    },
+    {
+      "role": "GYM User",
+      "read": 1,
+      "create": 1,
+      "write": 1,
+      "delete": 1,
+      "print": 1
+    }
+  ],
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "actions": [],
+  "links": [],
+  "states": []
+}

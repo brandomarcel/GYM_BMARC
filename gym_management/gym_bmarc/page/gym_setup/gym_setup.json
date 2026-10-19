@@ -1,0 +1,14 @@
+{
+  "doctype": "Page",
+  "name": "gym-setup",
+  "page_name": "gym-setup",
+  "module": "Gym BMARC",
+  "standard": "Yes",
+  "title": "Configuración de GYM",
+  "system_page": 0,
+  "roles": [
+    {
+      "role": "System Manager"
+    }
+  ]
+}

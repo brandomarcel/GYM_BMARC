@@ -1,0 +1,79 @@
+{
+  "doctype": "DocType",
+  "name": "GYM Branch User",
+  "module": "Gym BMARC",
+  "engine": "InnoDB",
+  "autoname": "hash",
+  "allow_rename": 0,
+  "track_changes": 1,
+  "index_web_pages_for_search": 0,
+  "make_attachments_public": 0,
+  "field_order": [
+    "business",
+    "status",
+    "branch",
+    "user"
+  ],
+  "fields": [
+    {
+      "fieldname": "business",
+      "fieldtype": "Link",
+      "label": "Negocio",
+      "options": "FacturADA Business",
+      "reqd": 1,
+      "search_index": 1
+    },
+    {
+      "fieldname": "status",
+      "fieldtype": "Select",
+      "label": "Estado",
+      "options": "Activo\nInactivo",
+      "default": "Activo",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "branch",
+      "fieldtype": "Link",
+      "label": "Sucursal",
+      "options": "GYM Branch",
+      "reqd": 1,
+      "in_list_view": 1,
+      "search_index": 1
+    },
+    {
+      "fieldname": "user",
+      "fieldtype": "Link",
+      "label": "Usuario",
+      "options": "User",
+      "reqd": 1,
+      "in_list_view": 1,
+      "search_index": 1
+    }
+  ],
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "print": 1
+    },
+    {
+      "role": "GYM User",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "print": 1
+    }
+  ],
+  "title_field": "user",
+  "search_fields": "user",
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "actions": [],
+  "links": [],
+  "states": []
+}

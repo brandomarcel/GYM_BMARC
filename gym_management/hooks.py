@@ -5,6 +5,69 @@ app_description = "App para gestion de gimnacios"
 app_email = "brandocevallos@bmarc-corp.com"
 app_license = "mit"
 
+# Core is the authority for business access, roles and licenses.
+required_apps = ["facturada_core"]
+app_include_js = ["/assets/gym_management/js/desk.js"]
+
+before_install = "gym_management.install.ensure_role"
+after_install = "gym_management.install.setup"
+after_migrate = "gym_management.install.setup"
+after_app_install = "gym_management.install.after_app_install"
+payment_receipt_sources = {"GYM Membership": "gym_management.payments.MembershipSource"}
+invoice_source_adapters = {"GYM Billing Request": "gym_management.billing.lite.BillingRequestInvoiceSource"}
+
+permission_query_conditions = {
+	"GYM Branch": "gym_management.permissions.branch_query",
+	"GYM Branch User": "gym_management.permissions.assignment_query",
+	"GYM Member": "gym_management.permissions.member_query",
+	"GYM Membership Plan": "gym_management.permissions.plan_query",
+	"GYM Promotion": "gym_management.permissions.promotion_query",
+	"GYM Membership": "gym_management.permissions.membership_query",
+	"GYM Attendance": "gym_management.permissions.attendance_query",
+	"GYM Billing Request": "gym_management.permissions.billing_request_query",
+	"FacturADA Lite Invoice": "gym_management.permissions.billing_invoice_query",
+	"File": "gym_management.permissions.file_query",
+}
+has_permission = {
+	"GYM Branch": "gym_management.permissions.has_permission",
+	"GYM Branch User": "gym_management.permissions.has_permission",
+	"GYM Member": "gym_management.permissions.has_permission",
+	"GYM Membership Plan": "gym_management.permissions.has_permission",
+	"GYM Promotion": "gym_management.permissions.has_permission",
+	"GYM Membership": "gym_management.permissions.has_permission",
+	"GYM Attendance": "gym_management.permissions.has_permission",
+	"GYM Billing Request": "gym_management.permissions.has_permission",
+	"FacturADA Lite Invoice": "gym_management.permissions.billing_invoice_permission",
+	"File": "gym_management.permissions.file_permission",
+}
+# Frappe's private-download path calls File.is_downloadable directly, outside
+# has_permission hooks. Preserve its policy and add the same GYM parent boundary.
+override_doctype_class = {"File": "gym_management.gym_file.GymAwareFile"}
+doctype_js = {
+	"GYM Branch": "public/js/gym_forms.js",
+	"GYM Branch User": "public/js/gym_forms.js",
+	"GYM Member": "public/js/gym_forms.js",
+	"GYM Membership Plan": "public/js/membership_forms.js",
+	"GYM Promotion": "public/js/promotion_forms.js",
+	"GYM Membership": [
+		"public/js/membership_forms.js",
+		"public/js/billing_forms.js",
+		"public/js/promotion_forms.js",
+	],
+	"GYM Billing Request": [
+		"public/js/billing_forms.js",
+		"public/js/receipt_application_forms.js",
+		"public/js/emission_forms.js",
+	],
+	"GYM Attendance": "public/js/membership_forms.js",
+}
+doc_events = {
+	"FacturADA Business User": {"on_update": "gym_management.install.sync_assignment_user"},
+	"FacturADA Business Subscription": {"on_update": "gym_management.install.sync_business_users"},
+	"File": {"validate": "gym_management.permissions.validate_file"},
+	"DocShare": {"validate": "gym_management.permissions.prevent_sharing"},
+}
+
 # Apps
 # ------------------
 
@@ -246,4 +309,3 @@ app_license = "mit"
 # ------------
 # List of apps whose translatable strings should be excluded from this app's translations.
 # ignore_translatable_strings_from = []
-

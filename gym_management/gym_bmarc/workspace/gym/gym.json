@@ -1,0 +1,106 @@
+{
+  "doctype": "Workspace",
+  "name": "GYM",
+  "label": "GYM",
+  "title": "GYM",
+  "module": "Gym BMARC",
+  "public": 1,
+  "is_hidden": 0,
+  "icon": "organization",
+  "content": "[{\"id\": \"gym-section-0\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\">Operación diaria</span>\", \"col\": 12}}, {\"id\": \"gym-task-1\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Inicio del gimnasio\", \"col\": 4}}, {\"id\": \"gym-task-2\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Caja del gimnasio\", \"col\": 4}}, {\"id\": \"gym-task-3\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Socios\", \"col\": 4}}, {\"id\": \"gym-task-4\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Membresías\", \"col\": 4}}, {\"id\": \"gym-task-5\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Control de acceso\", \"col\": 4}}, {\"id\": \"gym-task-6\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Asistencias\", \"col\": 4}}, {\"id\": \"gym-section-7\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\">Seguimiento</span>\", \"col\": 12}}, {\"id\": \"gym-task-8\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Membresías y saldos\", \"col\": 4}}, {\"id\": \"gym-section-9\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\">Administración</span>\", \"col\": 12}}, {\"id\": \"gym-task-10\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Configuración de GYM\", \"col\": 4}}, {\"id\": \"gym-task-11\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Planes\", \"col\": 4}}, {\"id\": \"gym-task-12\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Promociones\", \"col\": 4}}, {\"id\": \"gym-task-13\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Sucursales\", \"col\": 4}}, {\"id\": \"gym-task-14\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Personal por sucursal\", \"col\": 4}}]",
+  "shortcuts": [
+    {
+      "label": "Inicio del gimnasio",
+      "type": "Page",
+      "link_to": "gym-home",
+      "color": "Blue"
+    },
+    {
+      "label": "Caja del gimnasio",
+      "type": "Page",
+      "link_to": "gym-cash",
+      "color": "Green"
+    },
+    {
+      "label": "Configuración de GYM",
+      "type": "Page",
+      "link_to": "gym-setup",
+      "color": "Grey"
+    },
+    {
+      "label": "Socios",
+      "type": "DocType",
+      "link_to": "GYM Member",
+      "doc_view": "List",
+      "color": "Grey"
+    },
+    {
+      "label": "Sucursales",
+      "type": "DocType",
+      "link_to": "GYM Branch",
+      "doc_view": "List",
+      "color": "Grey"
+    },
+    {
+      "label": "Personal por sucursal",
+      "type": "DocType",
+      "link_to": "GYM Branch User",
+      "doc_view": "List",
+      "color": "Grey"
+    },
+    {
+      "label": "Planes",
+      "type": "DocType",
+      "link_to": "GYM Membership Plan",
+      "doc_view": "List",
+      "color": "Grey"
+    },
+    {
+      "label": "Membresías",
+      "type": "DocType",
+      "link_to": "GYM Membership",
+      "doc_view": "List",
+      "color": "Grey"
+    },
+    {
+      "label": "Control de acceso",
+      "type": "Page",
+      "link_to": "gym-access",
+      "doc_view": "List",
+      "color": "Grey"
+    },
+    {
+      "label": "Asistencias",
+      "type": "DocType",
+      "link_to": "GYM Attendance",
+      "doc_view": "List",
+      "color": "Grey"
+    },
+    {
+      "label": "Membresías y saldos",
+      "type": "Report",
+      "link_to": "GYM Membership Overview",
+      "color": "Grey"
+    },
+    {
+      "label": "Promociones",
+      "type": "DocType",
+      "link_to": "GYM Promotion",
+      "doc_view": "List",
+      "color": "Grey"
+    }
+  ],
+  "roles": [
+    {
+      "role": "GYM User"
+    },
+    {
+      "role": "System Manager"
+    }
+  ],
+  "links": [],
+  "charts": [],
+  "number_cards": [],
+  "quick_lists": [],
+  "custom_blocks": []
+}

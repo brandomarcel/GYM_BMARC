@@ -4,6 +4,14 @@
 
 Este repositorio contiene la app Frappe `gym_management`, titulada **Gym BMARC**, para administrar gimnasios. Su módulo es `Gym BMARC` y su paquete de dominio es `gym_management/gym_bmarc`. No confundir esta app con el frontend Angular ni con las apps FacturADA vecinas del Bench.
 
+### Dirección acordada
+
+Leer [docs/HOJA_DE_RUTA.md](docs/HOJA_DE_RUTA.md) antes de cambios estructurales. El objetivo acordado es un SaaS multiempresa y multisucursal integrado con FacturADA Core/Lite, con módulos configurables y posibilidad de trasladar un negocio a un sitio exclusivo. La base con Core está implementada y validada en sitio aislado; las membresías y los cobros internos están implementados en pruebas; el puente fiscal con Lite incluye borrador, aplicaciones y emisión/consulta simulada; las correcciones vinculadas siguen pendientes. No reemplazar los campos actuales de compañía ni instalar dependencias sin resolver el mapeo y la migración descritos en la etapa 1. Actualizar el estado de cada etapa únicamente con evidencia de implementación y validación.
+
+El inventario y la propuesta concreta están en [docs/DISENO_BASE_Y_MIGRACION.md](docs/DISENO_BASE_Y_MIGRACION.md). El piloto fue respaldado y preparado posteriormente con configuración demo según [docs/PILOTO_LOCAL.md](docs/PILOTO_LOCAL.md). Antes de cambios posteriores, volver a inventariar sus datos: ya no es un sitio vacío. El usuario pidió políticas configurables para pago completo/abonos/crédito, renovaciones y acceso por sede; consultar [docs/MEMBRESIAS_Y_COBROS.md](docs/MEMBRESIAS_Y_COBROS.md) para las políticas implementadas y sus límites. Los recibos compartidos de Lite son internos y no emiten facturas.
+
+La nueva base y su validación se describen en [docs/BASE_MULTIEMPRESA.md](docs/BASE_MULTIEMPRESA.md). La validación inicial fue en `gym_stage2_test.localhost`. Posteriormente el usuario autorizó preparar el piloto local `gym_bmarc`; ahora contiene negocio, usuarios, sede, planes y terminal de demostración. No ejecutar pruebas automáticas ni limpieza de fixtures sobre ese piloto. El código requiere Core y define `GYM Branch`, `GYM Branch User`, `GYM Member`, permisos por negocio/sede y el rol técnico `GYM User`. Las listas y documentos deben conservar los hooks de `permissions.py`. `GymAwareFile` protege además la descarga privada y valida antes de escribir archivos públicos. No quitar esos controles ni habilitar compartición genérica. Los modelos heredados siguen existiendo; no están migrados.
+
 La arquitectura sigue el modelo estándar de Frappe:
 
 - **Persistencia y metadatos:** DocTypes definidos en JSON, con campos, relaciones, permisos y configuración de formularios.
@@ -11,9 +19,25 @@ La arquitectura sigue el modelo estándar de Frappe:
 - **Interfaz:** Frappe Desk con JavaScript, eventos `frappe.ui.form.on`, llamadas `frappe.call`, páginas y Workspaces. No hay una aplicación SPA independiente.
 - **Reportes:** Script Reports con `execute(filters=None)`, consultas SQL y retorno de columnas/datos; sus archivos JS declaran filtros.
 - **API propia:** `gym_management/public/apiRest.py` contiene el método autenticado `get_company_and_plans(user)`, expuesto con `@frappe.whitelist()`. Su ubicación es atípica: conservar la ruta pública Python existente al modificarla.
-- **Extensiones:** `hooks.py` contiene los metadatos de la app; las opciones de eventos, scheduler, assets y permisos están comentadas. No asumir que esos ejemplos están activos.
+- **Extensiones:** `hooks.py` contiene metadatos y hooks activos de instalación, permisos, eventos, formularios y override de File para la nueva base. El resto de ejemplos comentados no están activos.
 
-### Modelo de negocio
+La decisión de integración fiscal está en [docs/INTEGRACION_FISCAL.md](docs/INTEGRACION_FISCAL.md): dentro del sitio se usan servicios Lite con permisos del operador; la API externa se reserva para sistemas remotos. La preparación de borradores está implementada según [docs/BORRADOR_FISCAL.md](docs/BORRADOR_FISCAL.md); las aplicaciones y reversos están implementados según [docs/APLICACIONES_DE_RECIBOS.md](docs/APLICACIONES_DE_RECIBOS.md); emisión/consulta están implementadas según [docs/EMISION_FISCAL.md](docs/EMISION_FISCAL.md). Respetar aplicaciones y saldos existentes, sin duplicar ingresos ni asumir impuestos incluidos. No usar credenciales API o contexto Administrator para ampliar permisos de recepción.
+
+Lite conserva las aplicaciones en `FacturADA Receipt Application` y su caso de uso en `payments/applications.py`. No convertirlas en nuevos recibos o abonos tradicionales. El adaptador GYM autoriza origen, negocio y sede. Conservar locks antes de `save` de Frappe, proyección de saldos con lecturas actuales, límites por recibo/factura, reversos con motivo y bloqueo de anulación de recibos aplicados. Aplicar dinero histórico de caja cerrada no modifica el cierre; reversar aplicaciones de esa caja está bloqueado.
+
+El flujo fiscal separa `api/invoicing.py` (RPC), `billing/service.py` (caso de uso y `DraftGateway`), `billing/lite.py` (adaptador) y `GYM Billing Request` (persistencia inmutable). Las inserciones genéricas reutilizan el mismo caso de uso. Lite ejecuta `invoice_source_adapters` antes de validar, numerar, enviar y devolver/listar estos documentos. Conservar la protección del origen, el orden de locks y los controles de archivos; el envío GYM solo pasa por `billing/emission.py`, que confirma identidad e intento antes del POST y conserva el lock compartido entre commits. Todo reintento posterior solo consulta. No envolver este caso de uso en otra transacción. Conservar `emission_identity`, condiciones inmutables y lecturas actuales de formas fiscales; las rutas genéricas no emiten ni crean correcciones desvinculadas. Los campos Data hacia Lite evitan dependencias obligatorias de esquema, pero se validan como referencias de negocio en servidor.
+
+La etapa 3 añade `GYM Membership Plan`, `GYM Membership`, `GYM Membership Branch` y `GYM Attendance`, APIs en `api/memberships.py`, reglas en `membership_rules.py`, adaptador Lite en `payments.py` y página `gym-access`. Conservar snapshots confirmados, orden de bloqueos socio → contrato, claves de reintento y recibos compartidos. No duplicar ingresos al conectar facturación ni sustituir anulación por borrado. Lite es opcional para GYM; sin Lite no hay cobros. Efectivo utiliza la caja existente de Restaurante.
+
+### Frontend y administración acordados
+
+El frontend operativo de GYM será un proyecto Angular independiente del Angular de Facturada. Frappe conserva lógica, permisos, persistencia y APIs; El 2026-10-18 el usuario autorizó mejorar el Desk para facilitar el uso actual; esto no reemplaza el frontend Angular previsto. Los formularios y herramientas Desk existentes siguen disponibles para administración y prueba. El administrador técnico configura negocios, licencias, sucursales, usuarios y planes en Frappe mediante `gym-setup` y los formularios existentes; no otorgar System Manager al personal o a los dueños de gimnasios para facilitarlo.
+
+`operations.py` contiene las consultas operativas y `api/operations.py` su transporte para Angular. Conservar alcance SQL por negocio/sede también en totales y listas, paginación y límites de fechas. Los nombres de socios visitantes requieren además permiso sobre su perfil de origen. Los saldos provienen de recibos confirmados, no de formas fiscales. El checklist `api/setup.py` es de lectura y exige rol técnico y usuario habilitado; no convierte conteos básicos en alta automática ni en garantía de preparación completa. Ver [docs/API_OPERATIVA.md](docs/API_OPERATIVA.md) y [docs/CONFIGURACION_RAPIDA.md](docs/CONFIGURACION_RAPIDA.md).
+
+El usuario requiere promociones, incluido 2×1. Ver [docs/PROMOCIONES.md](docs/PROMOCIONES.md): los descuentos individuales por porcentaje/importe fijo están implementados en `promotions.py` y `api/promotions.py`; los grupos y el beneficio por tiempo siguen pendientes. Conservar cálculo de servidor, validación de campaña al confirmar, snapshot histórico y compatibilidad de hashes sin promoción. Recepción aplica campañas con permisos de contratación, sin ampliar el permiso de descuento manual. No simular una promoción grupal con socios fusionados, recibos duplicados o modificaciones retroactivas del plan. Distinguir beneficio de tiempo y de varios socios; definir contratación, distribución de importes/acceso y vínculo fiscal antes de implementar el grupo.
+
+### Modelo de negocio heredado
 
 | Entidad | Función y relaciones |
 | --- | --- |
@@ -41,7 +65,7 @@ Los reportes disponibles son `Membresias Registradas` y `Membresias a expirar`. 
 
 En el checkout vecino inspeccionado, Frappe declara `15.116.1` y Node.js `>=18`. Son referencias del entorno actual, **no versiones fijadas por este repositorio**; verificar el Bench de destino antes de asumir compatibilidad.
 
-La lista activa de dependencias Python está vacía: Frappe se instala mediante Bench. No se declara `required_apps` activo ni dependencia explícita de ERPNext. No hay `package.json`, lockfile JS ni pipeline de CI versionado en esta app. Las consultas actuales usan sintaxis de MariaDB/MySQL (`DATEDIFF`, `IF`, nombres con backticks); no asumir compatibilidad con PostgreSQL.
+La lista activa de dependencias Python está vacía: Frappe se instala mediante Bench. `hooks.py` declara `required_apps = ["facturada_core"]`; instalar Core antes de GYM. No se declara dependencia de ERPNext. No hay `package.json`, lockfile JS ni pipeline de CI versionado en esta app. Las consultas actuales usan sintaxis de MariaDB/MySQL (`DATEDIFF`, `IF`, nombres con backticks); no asumir compatibilidad con PostgreSQL.
 
 Integraciones presentes en el navegador: generación de QR mediante `api.qrserver.com` y enlaces de WhatsApp `wa.me` con prefijo ecuatoriano `+593`. No son paquetes instalados ni implican envío automático desde el backend.
 
@@ -129,7 +153,7 @@ No inventar comandos `npm run dev`, `npm test` o `npm run lint`: no hay scripts 
 6. Mantener valores SQL parametrizados y comprobar permisos también en reportes. Aplicar filtros de compañía en el cliente o asignar una compañía por defecto no reemplaza la autorización del servidor.
 7. Revisar antes de tocar permisos JSON: los DocTypes principales declaran `System Manager`, mientras los reportes incluyen `Admin_Gym`. La app no exporta una definición de ese rol; verificar su provisión en el sitio.
 8. Para cambios de esquema, revisar Links, tablas hijas, nombres SQL, JS, reportes y API. Versionar metadatos y registrar un patch cuando sea necesario migrar datos, respetando las fases de `patches.txt` y evitando efectos duplicados al reintentar.
-9. Añadir pruebas útiles al cambiar lógica: permisos entre compañías, valores monetarios, descuentos, fechas y contratos API según el alcance. Los siete `test_*.py` actuales son clases `FrappeTestCase` vacías: no representan cobertura funcional.
+9. Añadir pruebas útiles al cambiar lógica: permisos entre compañías, valores monetarios, descuentos, fechas y contratos API según el alcance. Los tests heredados vacíos no representan cobertura; las suites funcionales nuevas viven en `gym_management/tests`.
 10. Validar el flujo afectado en un sitio de desarrollo: guardar y recargar documentos, revisar cálculos y reportes, probar acceso permitido y denegado. Reportar archivos cambiados, comprobaciones ejecutadas, limitaciones y pasos manuales pendientes.
 
 ### La IA NO DEBE
@@ -148,3 +172,5 @@ No inventar comandos `npm run dev`, `npm test` o `npm run lint`: no hay scripts 
 ## 7. Mantenimiento de esta guía
 
 Actualizar este archivo cuando cambien los comandos, dependencias, estructura o contratos del proyecto. Distinguir siempre entre configuración declarada, estado del entorno local y funcionalidad efectivamente implementada. Para cambios exclusivamente documentales, revisar exactitud y diff; no ejecutar migraciones ni pruebas con base de datos innecesariamente.
+
+Las mejoras de Desk y el recorrido de caja están descritos en [docs/USO_DEL_DESK.md](docs/USO_DEL_DESK.md). `api/cash.py` es transporte y `cash.py` adapta el alcance GYM a los servicios de Restaurante; no duplicar el motor financiero ni ampliar permisos de recepción. `public/js/desk.js` contiene únicamente ayudas de presentación; el servidor sigue autorizando cada operación.

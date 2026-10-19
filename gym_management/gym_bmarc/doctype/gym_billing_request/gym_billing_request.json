@@ -1,0 +1,231 @@
+{
+  "doctype": "DocType",
+  "name": "GYM Billing Request",
+  "module": "Gym BMARC",
+  "engine": "InnoDB",
+  "autoname": "hash",
+  "allow_rename": 0,
+  "track_changes": 1,
+  "make_attachments_public": 0,
+  "fields": [
+    {
+      "fieldname": "business",
+      "fieldtype": "Link",
+      "label": "Negocio",
+      "options": "FacturADA Business",
+      "reqd": 1,
+      "read_only": 1
+    },
+    {
+      "fieldname": "origin_branch",
+      "fieldtype": "Link",
+      "label": "Sucursal",
+      "options": "GYM Branch",
+      "reqd": 1,
+      "read_only": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "membership",
+      "fieldtype": "Link",
+      "label": "Membresía",
+      "options": "GYM Membership",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "customer",
+      "fieldtype": "Data",
+      "label": "Cliente fiscal",
+      "reqd": 1
+    },
+    {
+      "fieldname": "service",
+      "fieldtype": "Data",
+      "label": "Servicio Lite",
+      "reqd": 1
+    },
+    {
+      "fieldname": "pos_terminal",
+      "fieldtype": "Data",
+      "label": "Terminal fiscal",
+      "reqd": 1
+    },
+    {
+      "fieldname": "price_basis",
+      "fieldtype": "Select",
+      "label": "Tratamiento del precio",
+      "options": "\nImpuestos incluidos\nImpuestos no incluidos",
+      "reqd": 1
+    },
+    {
+      "fieldname": "commercial_total",
+      "fieldtype": "Currency",
+      "label": "Total contratado",
+      "read_only": 1,
+      "options": "USD"
+    },
+    {
+      "fieldname": "invoice_total",
+      "fieldtype": "Currency",
+      "label": "Total fiscal",
+      "read_only": 1,
+      "options": "USD"
+    },
+    {
+      "fieldname": "tax_rate",
+      "fieldtype": "Percent",
+      "label": "Tarifa del servicio",
+      "read_only": 1
+    },
+    {
+      "fieldname": "environment",
+      "fieldtype": "Data",
+      "label": "Ambiente",
+      "read_only": 1
+    },
+    {
+      "fieldname": "invoice",
+      "fieldtype": "Data",
+      "label": "Borrador Lite",
+      "read_only": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "request_key",
+      "fieldtype": "Data",
+      "label": "Clave de reintento",
+      "reqd": 1,
+      "hidden": 1,
+      "length": 100
+    },
+    {
+      "fieldname": "request_hash",
+      "fieldtype": "Data",
+      "label": "Huella de solicitud",
+      "read_only": 1,
+      "hidden": 1
+    },
+    {
+      "fieldname": "draft_payload",
+      "fieldtype": "Code",
+      "label": "Condiciones fiscales",
+      "options": "JSON",
+      "read_only": 1,
+      "hidden": 1
+    },
+    {
+      "fieldname": "prepared_by",
+      "fieldtype": "Link",
+      "label": "Preparado por",
+      "options": "User",
+      "read_only": 1
+    },
+    {
+      "fieldname": "prepared_at",
+      "fieldtype": "Datetime",
+      "label": "Preparado el",
+      "read_only": 1
+    },
+    {
+      "fieldname": "emission_terms",
+      "fieldtype": "Code",
+      "label": "Formas fiscales acordadas",
+      "read_only": 1,
+      "hidden": 1,
+      "options": "JSON"
+    },
+    {
+      "fieldname": "emission_requested_by",
+      "fieldtype": "Data",
+      "label": "Emisión solicitada por",
+      "read_only": 1
+    },
+    {
+      "fieldname": "emission_requested_at",
+      "fieldtype": "Datetime",
+      "label": "Emisión solicitada el",
+      "read_only": 1
+    },
+    {
+      "fieldname": "emission_started_at",
+      "fieldtype": "Datetime",
+      "label": "Intento de envío persistido el",
+      "read_only": 1
+    },
+    {
+      "fieldname": "emission_access_key",
+      "fieldtype": "Data",
+      "label": "Clave fiscal conservada",
+      "read_only": 1
+    },
+    {
+      "fieldname": "emission_ruc",
+      "fieldtype": "Data",
+      "label": "RUC del emisor al preparar",
+      "read_only": 1
+    },
+    {
+      "fieldname": "emission_error",
+      "fieldtype": "Small Text",
+      "label": "Revisión del envío",
+      "read_only": 1
+    },
+    {
+      "fieldname": "emission_identity",
+      "fieldtype": "Code",
+      "label": "Identidad fiscal reservada",
+      "read_only": 1,
+      "hidden": 1,
+      "options": "JSON"
+    }
+  ],
+  "field_order": [
+    "business",
+    "origin_branch",
+    "membership",
+    "customer",
+    "service",
+    "pos_terminal",
+    "price_basis",
+    "commercial_total",
+    "invoice_total",
+    "tax_rate",
+    "environment",
+    "invoice",
+    "request_key",
+    "request_hash",
+    "draft_payload",
+    "prepared_by",
+    "prepared_at",
+    "emission_terms",
+    "emission_requested_by",
+    "emission_requested_at",
+    "emission_started_at",
+    "emission_access_key",
+    "emission_ruc",
+    "emission_error",
+    "emission_identity"
+  ],
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "create": 1,
+      "write": 1,
+      "print": 1
+    },
+    {
+      "role": "GYM User",
+      "read": 1,
+      "create": 1,
+      "write": 1,
+      "print": 1
+    }
+  ],
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "actions": [],
+  "links": [],
+  "states": []
+}

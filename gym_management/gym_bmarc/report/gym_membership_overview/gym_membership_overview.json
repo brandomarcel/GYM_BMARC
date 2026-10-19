@@ -1,0 +1,18 @@
+{
+  "doctype": "Report",
+  "name": "GYM Membership Overview",
+  "report_name": "GYM Membership Overview",
+  "ref_doctype": "GYM Membership",
+  "report_type": "Script Report",
+  "is_standard": "Yes",
+  "module": "Gym BMARC",
+  "disabled": 0,
+  "roles": [
+    {
+      "role": "System Manager"
+    },
+    {
+      "role": "GYM User"
+    }
+  ]
+}

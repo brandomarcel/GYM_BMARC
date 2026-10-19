@@ -1,0 +1,180 @@
+{
+  "doctype": "DocType",
+  "name": "GYM Membership Plan",
+  "module": "Gym BMARC",
+  "engine": "InnoDB",
+  "autoname": "hash",
+  "allow_rename": 0,
+  "track_changes": 1,
+  "index_web_pages_for_search": 0,
+  "make_attachments_public": 0,
+  "fields": [
+    {
+      "fieldname": "business",
+      "fieldtype": "Link",
+      "label": "Negocio",
+      "options": "FacturADA Business",
+      "reqd": 1,
+      "search_index": 1
+    },
+    {
+      "fieldname": "status",
+      "fieldtype": "Select",
+      "label": "Estado",
+      "options": "Activo\nInactivo",
+      "default": "Activo",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "plan_code",
+      "fieldtype": "Data",
+      "label": "Código del plan",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "plan_name",
+      "fieldtype": "Data",
+      "label": "Plan",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "duration",
+      "fieldtype": "Int",
+      "label": "Duración",
+      "reqd": 1,
+      "default": "1"
+    },
+    {
+      "fieldname": "duration_unit",
+      "fieldtype": "Select",
+      "label": "Unidad",
+      "options": "Dias\nMeses",
+      "reqd": 1,
+      "default": "Meses"
+    },
+    {
+      "fieldname": "price",
+      "fieldtype": "Currency",
+      "label": "Precio pactado",
+      "options": "currency",
+      "reqd": 1,
+      "description": "Precio base de una membresía en USD. Las promociones se aplican al contratar, sin cambiar este precio."
+    },
+    {
+      "fieldname": "currency",
+      "fieldtype": "Link",
+      "label": "Moneda",
+      "options": "Currency",
+      "default": "USD",
+      "reqd": 1
+    },
+    {
+      "fieldname": "access_mode",
+      "fieldtype": "Select",
+      "label": "Acceso",
+      "options": "Una sede\nVarias sedes\nTodas las sedes",
+      "reqd": 1,
+      "default": "Una sede"
+    },
+    {
+      "fieldname": "branches",
+      "fieldtype": "Table",
+      "label": "Sedes incluidas",
+      "options": "GYM Membership Branch",
+      "description": "Seleccione únicamente las sucursales incluidas en este plan.",
+      "depends_on": "eval:doc.access_mode === \"Varias sedes\""
+    },
+    {
+      "fieldname": "renewal_mode",
+      "fieldtype": "Select",
+      "label": "Renovación",
+      "options": "Continua\nDesde regreso\nFecha elegida",
+      "reqd": 1,
+      "default": "Desde regreso",
+      "description": "Continua: inicia después del contrato anterior. Desde regreso: respeta la fecha de regreso sin solapar contratos. Fecha elegida: permite escoger el inicio sin solapamientos."
+    },
+    {
+      "fieldname": "payment_policy",
+      "fieldtype": "Select",
+      "label": "Condición de pago",
+      "options": "Completo\nAbonos\nCredito",
+      "reqd": 1,
+      "default": "Completo",
+      "description": "Completo: requiere pago total. Abonos: exige el porcentaje mínimo. Crédito: requiere autorización expresa en cada membresía."
+    },
+    {
+      "fieldname": "minimum_percentage",
+      "fieldtype": "Percent",
+      "label": "Porcentaje mínimo para acceso",
+      "default": "100"
+    },
+    {
+      "fieldname": "grace_days",
+      "fieldtype": "Int",
+      "label": "Días de gracia para deuda",
+      "default": "0",
+      "description": "Días adicionales después de la fecha límite para pagar una deuda. No reemplazan el pago mínimo de acceso."
+    },
+    {
+      "fieldname": "desk_section_0",
+      "fieldtype": "Section Break",
+      "label": "Plan y precio"
+    },
+    {
+      "fieldname": "desk_section_1",
+      "fieldtype": "Section Break",
+      "label": "Duración y sedes"
+    },
+    {
+      "fieldname": "desk_section_2",
+      "fieldtype": "Section Break",
+      "label": "Pago y habilitación de acceso"
+    }
+  ],
+  "field_order": [
+    "desk_section_0",
+    "business",
+    "status",
+    "plan_code",
+    "plan_name",
+    "price",
+    "currency",
+    "desk_section_1",
+    "duration",
+    "duration_unit",
+    "access_mode",
+    "branches",
+    "renewal_mode",
+    "desk_section_2",
+    "payment_policy",
+    "minimum_percentage",
+    "grace_days"
+  ],
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "create": 1,
+      "write": 1,
+      "delete": 1,
+      "print": 1
+    },
+    {
+      "role": "GYM User",
+      "read": 1,
+      "create": 1,
+      "write": 1,
+      "delete": 1,
+      "print": 1
+    }
+  ],
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "actions": [],
+  "links": [],
+  "states": [],
+  "title_field": "plan_name"
+}

@@ -1,0 +1,133 @@
+{
+  "doctype": "DocType",
+  "name": "GYM Member",
+  "module": "Gym BMARC",
+  "engine": "InnoDB",
+  "autoname": "hash",
+  "allow_rename": 0,
+  "track_changes": 1,
+  "index_web_pages_for_search": 0,
+  "make_attachments_public": 0,
+  "field_order": [
+    "desk_section_0",
+    "business",
+    "home_branch",
+    "status",
+    "member_code",
+    "first_name",
+    "last_name",
+    "full_name",
+    "desk_section_1",
+    "email",
+    "phone",
+    "birth_date"
+  ],
+  "fields": [
+    {
+      "fieldname": "business",
+      "fieldtype": "Link",
+      "label": "Negocio",
+      "options": "FacturADA Business",
+      "reqd": 1,
+      "search_index": 1
+    },
+    {
+      "fieldname": "status",
+      "fieldtype": "Select",
+      "label": "Estado",
+      "options": "Activo\nInactivo",
+      "default": "Activo",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "home_branch",
+      "fieldtype": "Link",
+      "label": "Sucursal de registro",
+      "options": "GYM Branch",
+      "reqd": 1,
+      "in_list_view": 1,
+      "search_index": 1
+    },
+    {
+      "fieldname": "member_code",
+      "fieldtype": "Data",
+      "label": "Código de socio",
+      "reqd": 1,
+      "in_list_view": 1,
+      "description": "Código único dentro del negocio. Se utiliza para registrar el ingreso del socio."
+    },
+    {
+      "fieldname": "first_name",
+      "fieldtype": "Data",
+      "label": "Nombres",
+      "reqd": 1
+    },
+    {
+      "fieldname": "last_name",
+      "fieldtype": "Data",
+      "label": "Apellidos",
+      "reqd": 1
+    },
+    {
+      "fieldname": "full_name",
+      "fieldtype": "Data",
+      "label": "Nombre completo",
+      "read_only": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "email",
+      "fieldtype": "Data",
+      "label": "Correo",
+      "options": "Email"
+    },
+    {
+      "fieldname": "phone",
+      "fieldtype": "Data",
+      "label": "Teléfono"
+    },
+    {
+      "fieldname": "birth_date",
+      "fieldtype": "Date",
+      "label": "Fecha de nacimiento"
+    },
+    {
+      "fieldname": "desk_section_0",
+      "fieldtype": "Section Break",
+      "label": "Identificación del socio",
+      "collapsible": 0
+    },
+    {
+      "fieldname": "desk_section_1",
+      "fieldtype": "Section Break",
+      "label": "Contacto",
+      "collapsible": 0
+    }
+  ],
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "print": 1
+    },
+    {
+      "role": "GYM User",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "print": 1
+    }
+  ],
+  "title_field": "full_name",
+  "search_fields": "full_name",
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "actions": [],
+  "links": [],
+  "states": []
+}

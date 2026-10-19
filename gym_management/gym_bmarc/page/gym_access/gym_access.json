@@ -1,0 +1,17 @@
+{
+  "doctype": "Page",
+  "name": "gym-access",
+  "page_name": "gym-access",
+  "module": "Gym BMARC",
+  "standard": "Yes",
+  "title": "Control de acceso",
+  "system_page": 0,
+  "roles": [
+    {
+      "role": "GYM User"
+    },
+    {
+      "role": "System Manager"
+    }
+  ]
+}

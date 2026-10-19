@@ -1,0 +1,17 @@
+{
+  "doctype": "Page",
+  "name": "gym-cash",
+  "page_name": "gym-cash",
+  "module": "Gym BMARC",
+  "standard": "Yes",
+  "title": "Caja del gimnasio",
+  "system_page": 0,
+  "roles": [
+    {
+      "role": "GYM User"
+    },
+    {
+      "role": "System Manager"
+    }
+  ]
+}
